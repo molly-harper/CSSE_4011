@@ -48,3 +48,12 @@ float kalman_update(float measurement) {
 
     return estimate; 
 }
+
+float get_kalman_position(float ultrasonicMeas, float rssiMeas) { 
+
+    float weighted_val = weight_value(ultrasonicMeas, rssiMeas); 
+
+    float est = kalman_update(weighted_val); 
+
+    return est; 
+}
